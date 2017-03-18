@@ -927,6 +927,7 @@
   SDL_DestroyWindow
   SDL_GL_GetCurrentWindow
   SDL_GL_CreateContext
+  SDL_CreateRenderer
   SDL_GL_GetCurrentContext
   SDL_GL_DeleteContext
   SDL_GL_MakeCurrent
@@ -1024,5 +1025,12 @@
   SDL_Surface-refcount
   SDL_Surface_from_ptr
   SDL_FreeSurface
-)
-)
+  SDL_CreateTextureFromSurface
+  SDL_DestroyTexture
+  SDL_DestroyRenderer
+  SDL_RenderCopy
+  SDL_SetTextureAlphaMod
+  SDL_CreateRenderer
+  SDL_RenderPresent
+  SDL_GetError
+))

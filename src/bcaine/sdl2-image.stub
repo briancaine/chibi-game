@@ -1,0 +1,4 @@
+(c-include "SDL_image.h")
+(define-c (maybe-null (pointer void)) IMG_Load (string))
+(define-c (maybe-null (pointer void)) IMG_Load_RW ((pointer void) int))
+(define-c (maybe-null (pointer void)) IMG_LoadTyped_RW ((pointer void) int string))
