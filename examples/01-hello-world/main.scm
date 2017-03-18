@@ -9,14 +9,6 @@
  ;; the period by which hello-1 and hello-2 are scaled
 (define scaling-cycle-ms 2000)
 
-(for-each
- (lambda (dir)
-   (add-module-directory
-    (string-append (get-environment-variable "HOME") dir)
-    #t))
- '("/projects/chibi-game/src/"
-   "/projects/chibi-obj/src/"))
-
 (import (bcaine sdl2) (bcaine sdl2-image)
         (srfi 33)
         (only (scheme base) unless when)
