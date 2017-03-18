@@ -1,4 +1,4 @@
-all : src/bcaine/sdl2.so src/bcaine/sdl2-image.so
+all : src/bcaine/sdl2.so src/bcaine/sdl2-image.so package
 
 src/bcaine/sdl2.c : src/bcaine/sdl2.stub
 	chibi-ffi src/bcaine/sdl2.stub
