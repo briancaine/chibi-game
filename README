@@ -1,1 +1,15 @@
 I'm going to put useful gamedev code here, starting with bindings for SDL.
+
+My bindings are probably going to be pretty incomplete for awhile. I'm just writing what's useful to me at the moment.
+
+With all of this stuff, your mileage may vary.
+
+Pull requests welcome.
+
+Audio files used under CC Attribution 3.0 license
+
+https://creativecommons.org/licenses/by/3.0/
+
+Sources:
+http://soundbible.com/2139-Outdoor-Carnival.html
+http://soundbible.com/1934-Pill-Bottle.html

@@ -1012,37 +1012,37 @@
 (define-c-struct SDL_PixelFormat
  predicate:   SDL_PixelFormat?
  constructor: (make-SDL_PixelFormat)
- (unsigned-int   format        SDL_PixelFormat-format)
- ((pointer void) palette       SDL_PixelFormat-palette)
- (unsigned-char  BitsPerPixel  SDL_PixelFormat-BitsPerPixel)
- (unsigned-char  BytesPerPixel SDL_PixelFormat-BytesPerPixel)
+ (unsigned-int   format        SDL_PixelFormat-format SDL_PixelFormat-format-set!)
+ ((pointer void) palette       SDL_PixelFormat-palette SDL_PixelFormat-palette-set!)
+ (unsigned-char  BitsPerPixel  SDL_PixelFormat-BitsPerPixel SDL_PixelFormat-BitsPerPixel-set!)
+ (unsigned-char  BytesPerPixel SDL_PixelFormat-BytesPerPixel SDL_PixelFormat-BytesPerPixel-set!)
 
- (unsigned-int   Rmask         SDL_PixelFormat-Rmask)
- (unsigned-int   Gmask         SDL_PixelFormat-Gmask)
- (unsigned-int   Bmask         SDL_PixelFormat-Bmask)
- (unsigned-int   Amask         SDL_PixelFormat-Amask)
+ (unsigned-int   Rmask         SDL_PixelFormat-Rmask SDL_PixelFormat-Rmask-set!)
+ (unsigned-int   Gmask         SDL_PixelFormat-Gmask SDL_PixelFormat-Gmask-set!)
+ (unsigned-int   Bmask         SDL_PixelFormat-Bmask SDL_PixelFormat-Bmask-set!)
+ (unsigned-int   Amask         SDL_PixelFormat-Amask SDL_PixelFormat-Amask-set!)
 
- (unsigned-char  Rloss         SDL_PixelFormat-Rloss)
- (unsigned-char  Gloss         SDL_PixelFormat-Gloss)
- (unsigned-char  Bloss         SDL_PixelFormat-Bloss)
- (unsigned-char  Aloss         SDL_PixelFormat-Aloss)
+ (unsigned-char  Rloss         SDL_PixelFormat-Rloss SDL_PixelFormat-Rloss-set!)
+ (unsigned-char  Gloss         SDL_PixelFormat-Gloss SDL_PixelFormat-Gloss-set!)
+ (unsigned-char  Bloss         SDL_PixelFormat-Bloss SDL_PixelFormat-Bloss-set!)
+ (unsigned-char  Aloss         SDL_PixelFormat-Aloss SDL_PixelFormat-Aloss-set!)
 
- (unsigned-char  Rshift        SDL_PixelFormat-Rshift)
- (unsigned-char  Gshift        SDL_PixelFormat-Gshift)
- (unsigned-char  Bshift        SDL_PixelFormat-Bshift)
- (unsigned-char  Ashift        SDL_PixelFormat-Ashift)
+ (unsigned-char  Rshift        SDL_PixelFormat-Rshift SDL_PixelFormat-Rshift-set!)
+ (unsigned-char  Gshift        SDL_PixelFormat-Gshift SDL_PixelFormat-Gshift-set!)
+ (unsigned-char  Bshift        SDL_PixelFormat-Bshift SDL_PixelFormat-Bshift-set!)
+ (unsigned-char  Ashift        SDL_PixelFormat-Ashift SDL_PixelFormat-Ashift-set!)
 
- (int            refcount      SDL_PixelFormat-refcount)
- ((pointer void) next          SDL_PixelFormat-next)
+ (int            refcount      SDL_PixelFormat-refcount SDL_PixelFormat-refcount-set!)
+ ((pointer void) next          SDL_PixelFormat-next SDL_PixelFormat-next-set!)
 )
 
 (define-c-struct SDL_Rect
  predicate:   SDL_Rect?
  constructor: (make-SDL_Rect)
- (int x SDL_Rect-x)
- (int y SDL_Rect-y)
- (int w SDL_Rect-w)
- (int h SDL_Rect-h)
+ (int x SDL_Rect-x SDL_Rect-x-set!)
+ (int y SDL_Rect-y SDL_Rect-y-set!)
+ (int w SDL_Rect-w SDL_Rect-w-set!)
+ (int h SDL_Rect-h SDL_Rect-h-set!)
 )
 
 (c-declare
@@ -1052,16 +1052,16 @@
  predicate:   SDL_Surface?
  constructor: (make-SDL_Surface)
  (SDL_PixelFormat   format       SDL_Surface-format)
- (int               w            SDL_Surface-w)
- (int               h            SDL_Surface-h)
- (int               pitch        SDL_Surface-pitch)
- ((pointer void)    pixels       SDL_Surface-pixels)
- ((pointer void)    userdata     SDL_Surface-userdata)
- (int               locked       SDL_Surface-locked)
- ((pointer void)    lock_data    SDL_Surface-lock_data)
+ (int               w            SDL_Surface-w SDL_Surface-w-set!)
+ (int               h            SDL_Surface-h SDL_Surface-h-set!)
+ (int               pitch        SDL_Surface-pitch SDL_Surface-pitch-set!)
+ ((pointer void)    pixels       SDL_Surface-pixels SDL_Surface-pixels-set!)
+ ((pointer void)    userdata     SDL_Surface-userdata SDL_Surface-userdata-set!)
+ (int               locked       SDL_Surface-locked SDL_Surface-locked-set!)
+ ((pointer void)    lock_data    SDL_Surface-lock_data SDL_Surface-lock_data-set!)
  ((struct SDL_Rect) clip_rect    SDL_Surface-clip_rect)
- ((pointer void)    map          SDL_Surface-map)
- (int               refcount     SDL_Surface-refcount))
+ ((pointer void)    map          SDL_Surface-map SDL_Surface-map-set!)
+ (int               refcount     SDL_Surface-refcount SDL_Surface-refcount-set!))
 
 (define-c (struct SDL_Surface) SDL_Surface_from_ptr ((pointer void)))
 
@@ -1075,3 +1075,7 @@
 
 (define-c void SDL_RenderPresent ((pointer void)))
 (define-c string SDL_GetError ())
+
+(define-c int SDL_QueryTexture
+              ((pointer void) (array unsigned-int)
+               (array int) (array int) (array int)))

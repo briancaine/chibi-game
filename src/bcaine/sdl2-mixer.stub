@@ -1,0 +1,46 @@
+(c-include "SDL_mixer.h")
+
+; (define-c (pointer void) Mix_Linked_Version ())
+; (c-declare "void Wrap_SDL_MIXER_VERSION(SDL_version* target) { SDL_MIXER_VERSION(target); }")
+
+; (define-c void Wrap_SDL_MIXER_VERSION ((pointer void)))
+
+(define-c-const int MIX_INIT_FLAC)
+(define-c-const int MIX_INIT_MOD)
+(define-c-const int MIX_INIT_MP3)
+(define-c-const int MIX_INIT_OGG)
+
+(define-c int Mix_Init (int))
+
+(define-c void Mix_Quit ())
+
+(define-c int Mix_OpenAudio (int unsigned-short int int))
+
+(define-c-const int AUDIO_U8)
+(define-c-const int AUDIO_S8)
+(define-c-const int AUDIO_U16LSB)
+(define-c-const int AUDIO_S16LSB)
+(define-c-const int AUDIO_U16MSB)
+(define-c-const int AUDIO_S16MSB)
+(define-c-const int AUDIO_U16)
+(define-c-const int AUDIO_S16)
+
+(define-c-const int AUDIO_U16SYS)
+(define-c-const int AUDIO_S16SYS)
+(define-c-const int MIX_DEFAULT_FORMAT)
+
+(define-c void Mix_CloseAudio ())
+
+(define-c string Mix_GetError ())
+
+(define-c (maybe-null (pointer void)) Mix_LoadWAV (string))
+(define-c void Mix_FreeChunk ((pointer void)))
+
+(define-c int Mix_PlayChannel (int (pointer void) int))
+(define-c int Mix_PlayChannelTimed (int (pointer void) int int))
+(define-c int Mix_HaltChannel (int))
+(define-c int Mix_AllocateChannels (int))
+
+(define-c int Mix_Playing (int))
+
+(define-c int Mix_SetSoundFonts (string))

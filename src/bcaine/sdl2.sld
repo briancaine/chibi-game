@@ -1,5 +1,6 @@
 (define-library (bcaine sdl2)
-  (import (chibi))
+  (import (chibi) (srfi 17))
+  (import (chibi bytevector) (only (scheme small) bytevector))
   (include-shared "sdl2")
   (export SDL_ADDEVENT
   SDL_ALPHA_OPAQUE
@@ -1010,6 +1011,10 @@
   SDL_Rect-y
   SDL_Rect-w
   SDL_Rect-h
+  SDL_Rect-x-set!
+  SDL_Rect-y-set!
+  SDL_Rect-w-set!
+  SDL_Rect-h-set!
   SDL_Surface?
   make-SDL_Surface
   SDL_Surface-format
@@ -1033,4 +1038,9 @@
   SDL_CreateRenderer
   SDL_RenderPresent
   SDL_GetError
-))
+  SDL_Texture-dimensions
+)
+  (include "sdl2.scm")
+  (export SDL_Texture-dimensions SDL_Rect-position SDL_Rect-dimensions SDL_Rect-bottom-right in-SDL_Rect?
+          SDL_MouseButtonEvent-position)
+)
