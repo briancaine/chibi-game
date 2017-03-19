@@ -4,6 +4,8 @@ My bindings are probably going to be pretty incomplete for awhile. I'm just writ
 
 With all of this stuff, your mileage may vary.
 
+Everything, including building, is dependent on bcaine/chibi-obj.
+
 Pull requests welcome.
 
 Audio files used under CC Attribution 3.0 license
