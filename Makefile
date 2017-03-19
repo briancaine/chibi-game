@@ -30,14 +30,17 @@ src/bcaine/sdl2-mixer.so : src/bcaine/sdl2-mixer.c
 bcaine-sdl2-0.0.1.tgz : src/bcaine/sdl2.sld src/bcaine/sdl2.stub src/bcaine/sdl2.scm
 	snow-chibi package src/bcaine/sdl2.sld
 
+bcaine-sdl2-obj-0.0.1.tgz : src/bcaine/sdl2/obj.sld src/bcaine/sdl2/obj.scm
+	snow-chibi package src/bcaine/sdl2/obj.sld
+
 bcaine-sdl2-image-0.0.1.tgz : src/bcaine/sdl2-image.sld src/bcaine/sdl2-image.stub
 	snow-chibi package src/bcaine/sdl2-image.sld
 
 bcaine-sdl2-mixer-0.0.1.tgz : src/bcaine/sdl2-mixer.sld src/bcaine/sdl2-mixer.stub
 	snow-chibi package src/bcaine/sdl2-mixer.sld
 
-package : bcaine-sdl2-0.0.1.tgz bcaine-sdl2-image-0.0.1.tgz bcaine-sdl2-mixer-0.0.1.tgz
+package : bcaine-sdl2-0.0.1.tgz bcaine-sdl2-image-0.0.1.tgz bcaine-sdl2-mixer-0.0.1.tgz bcaine-sdl2-obj-0.0.1.tgz
 
 clean :
-	rm -f src/bcaine/sdl2.c src/bcaine/sdl2.so src/bcaine/sdl2-image.c src/bcaine/sdl2-image.so src/bcaine/sdl2-mixer.c src/bcaine/sdl2-mixer.so bcaine-sdl2-0.0.1.tgz bcaine-sdl2-image-0.0.1.tgz bcaine-sdl2-mixer-0.0.1.tgz
+	rm -f src/bcaine/sdl2.c src/bcaine/sdl2.so src/bcaine/sdl2-image.c src/bcaine/sdl2-image.so src/bcaine/sdl2-mixer.c src/bcaine/sdl2-mixer.so bcaine-sdl2-0.0.1.tgz bcaine-sdl2-image-0.0.1.tgz bcaine-sdl2-mixer-0.0.1.tgz bcaine-sdl2-obj-0.0.1.tgz
 	rm -f src/bcaine/sdl2.sld src/bcaine/sdl2-mixer.sld src/bcaine/sdl2-image.sld
