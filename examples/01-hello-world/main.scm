@@ -80,9 +80,9 @@
                  (SDL_FreeSurface surf)
                  tex)))
 
-            (hello-1 (or (load-texture "graphics/hello1.png")
+            (hello-1 (or (load-texture "examples/01-hello-world/hello1.png")
                          (error "Failed to load hello1.png")))
-            (hello-2 (or (load-texture "graphics/hello2.png")
+            (hello-2 (or (load-texture "examples/01-hello-world/hello2.png")
                          (error "Failed to load hello2.png")))
             (timer (make-timer target-fps))
             (time-start (SDL_GetTicks)))
@@ -121,4 +121,5 @@
            (timer)
            (iter)))
 
-       (cleanup-resources)))))
+       (cleanup-resources)
+       (cleanup-exit 0)))))

@@ -166,7 +166,6 @@
   (handle-exceptions
       exn
       (begin
-(printf "debugx01 ~s\n" (Mix_GetError))
         (printf "Error: ~s ~s\n" (exception-message exn) (exception-irritants exn))
         (cleanup-exit 1))
     (begin
@@ -200,10 +199,10 @@
             (renderer (or (SDL_CreateRenderer window -1 0)
                           (error "Failed to create renderer")))
             (background-texture
-             (or ((texture-loader renderer) "graphics/buttons_background.png")
+             (or ((texture-loader renderer) "examples/02-audio/buttons_background.png")
                  (error "Failed to load background texture")))
             (button-texture
-             (or ((texture-loader renderer) "graphics/buttons.png")
+             (or ((texture-loader renderer) "examples/02-audio/buttons.png")
                  (error "Failed to load button texture")))
 
             (_ (or (zero? (Mix_OpenAudio audio-frequency audio-format
@@ -219,7 +218,7 @@
             (time-start (SDL_GetTicks)))
 
        (define (cleanup-resources)
-         (for-each button-cleanup! buttons)
+         (for-each cleanup-button! buttons)
          (Mix_CloseAudio)
          (SDL_DestroyTexture background-texture)
          (SDL_DestroyTexture button-texture)
@@ -239,4 +238,5 @@
            (timer)
            (iter)))
 
-       (cleanup-resources)))))
+       (cleanup-resources)
+       (cleanup-exit 0)))))
