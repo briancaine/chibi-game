@@ -1,6 +1,6 @@
 all : src/bcaine/sdl2.so src/bcaine/sdl2-image.so src/bcaine/sdl2-mixer.so package
 
-src/bcaine/sdl2.sld : src/bcaine/sdl2.preprocess.sld
+src/bcaine/sdl2.sld : src/bcaine/sdl2.preprocess.sld src/bcaine/sdl2.stub
 	chibi-scheme -R bcaine.sld-stub-expand src/bcaine/sdl2.preprocess.sld > src/bcaine/sdl2.sld
 
 src/bcaine/sdl2.c : src/bcaine/sdl2.stub
@@ -9,7 +9,7 @@ src/bcaine/sdl2.c : src/bcaine/sdl2.stub
 src/bcaine/sdl2.so : src/bcaine/sdl2.c
 	cc -fPIC -shared src/bcaine/sdl2.c -lchibi-scheme `sdl2-config --libs --cflags` -o src/bcaine/sdl2.so
 
-src/bcaine/sdl2-image.sld : src/bcaine/sdl2-image.preprocess.sld
+src/bcaine/sdl2-image.sld : src/bcaine/sdl2-image.preprocess.sld src/bcaine/sdl2-image.stub
 	chibi-scheme -R bcaine.sld-stub-expand src/bcaine/sdl2-image.preprocess.sld > src/bcaine/sdl2-image.sld
 
 src/bcaine/sdl2-image.c : src/bcaine/sdl2-image.stub
@@ -18,7 +18,7 @@ src/bcaine/sdl2-image.c : src/bcaine/sdl2-image.stub
 src/bcaine/sdl2-image.so : src/bcaine/sdl2-image.c
 	cc -fPIC -shared src/bcaine/sdl2-image.c -lchibi-scheme `sdl2-config --libs --cflags` -lSDL2_image -o src/bcaine/sdl2-image.so
 
-src/bcaine/sdl2-mixer.sld : src/bcaine/sdl2-mixer.preprocess.sld
+src/bcaine/sdl2-mixer.sld : src/bcaine/sdl2-mixer.preprocess.sld src/bcaine/sdl2-mixer.stub
 	chibi-scheme -R bcaine.sld-stub-expand src/bcaine/sdl2-mixer.preprocess.sld > src/bcaine/sdl2-mixer.sld
 
 src/bcaine/sdl2-mixer.c : src/bcaine/sdl2-mixer.stub
