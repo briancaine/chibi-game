@@ -70,6 +70,7 @@
                         (error "Failed to create window")))
             (renderer (or (SDL_CreateRenderer window -1 0)
                           (error "Failed to create renderer")))
+
             (load-texture
              (lambda (filename)
                (and-let* ((surf (IMG_Load filename))
@@ -84,6 +85,7 @@
                          (error "Failed to load hello1.png")))
             (hello-2 (or (load-texture "examples/01-hello-world/hello2.png")
                          (error "Failed to load hello2.png")))
+
             (timer (make-timer target-fps))
             (time-start (SDL_GetTicks)))
 
