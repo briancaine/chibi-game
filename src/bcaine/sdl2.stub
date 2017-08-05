@@ -937,17 +937,18 @@
 (define-c void SDL_Quit ())
 (define-c unsigned-int SDL_WasInit (unsigned-int))
 
-(define-c (maybe-null (pointer void)) SDL_CreateWindow (string int int int int unsigned-int))
-(define-c void SDL_DestroyWindow ((pointer void)))
+(define-c-struct SDL_Window predicate: SDL_Window?)
+(define-c (maybe-null (pointer SDL_Window)) SDL_CreateWindow (string int int int int unsigned-int))
+(define-c void SDL_DestroyWindow ((SDL_Window)))
 
-(define-c (maybe-null (pointer void)) SDL_CreateRenderer ((pointer void) int unsigned-int))
+(define-c (maybe-null (pointer void)) SDL_CreateRenderer (SDL_Window int unsigned-int))
 
-(define-c (pointer void) SDL_GL_GetCurrentWindow ())
-(define-c (pointer void) SDL_GL_CreateContext ((pointer void)))
+(define-c (pointer SDL_Window) SDL_GL_GetCurrentWindow ())
+(define-c (pointer void) SDL_GL_CreateContext ((SDL_Window)))
 (define-c (pointer void) SDL_GL_GetCurrentContext ())
 (define-c void SDL_GL_DeleteContext ((pointer void)))
 (define-c int SDL_GL_MakeCurrent ((pointer void) (pointer void)))
-(define-c void SDL_GL_SwapWindow ((pointer void)))
+(define-c void SDL_GL_SwapWindow ((SDL_Window)))
 
 (define-c-struct SDL_WindowEvent
  predicate:   SDL_WindowEvent?
