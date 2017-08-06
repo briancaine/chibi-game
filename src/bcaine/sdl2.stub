@@ -1,25 +1,16 @@
-(c-include "SDL.h")
-
 (import (chibi process)
         (prefix (chibi string) imported:)
         (chibi char-set full))
 
-(define sdl-args
-  (filter (lambda (x) (not (imported:string-null? x)))
-          (imported:string-split (process->string "sdl2-config --libs --cflags")
-                                 char-set:whitespace)))
+(set! *cflags*
+  (append
+   *cflags*
+   (filter (lambda (x) (not (imported:string-null? x)))
+           (imported:string-split
+            (process->string "sdl2-config --libs --cflags")
+            char-set:whitespace))))
 
-;; terrible hack to inject the above sdl-args into the compile command
-(set! execute
-  (let ((existing-execute execute))
-    (lambda args
-      (let* ((first-arg  (car args))
-             (second-arg (cadr args))
-             (second-arg
-               (if (and (pair? second-arg) (equal? (car second-arg) "cc"))
-                   (cons (car second-arg) (append sdl-args (cdr second-arg)))
-                   second-arg)))
-        (apply existing-execute (list first-arg second-arg))))))
+(c-include "SDL.h")
 
 (begin
   (define-c-const int SDL_ADDEVENT)
