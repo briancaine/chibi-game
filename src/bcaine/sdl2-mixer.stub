@@ -1,3 +1,6 @@
+(c-flags-from-script "sdl2-config --libs --cflags")
+(c-link "SDL2_mixer")
+
 (c-include "SDL_mixer.h")
 
 ; (define-c (pointer void) Mix_Linked_Version ())

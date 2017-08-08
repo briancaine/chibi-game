@@ -1,3 +1,6 @@
+(c-flags-from-script "sdl2-config --libs --cflags")
+(c-link "SDL2_image")
+
 (c-include "SDL_image.h")
 (define-c (maybe-null (pointer void)) IMG_Load (string))
 (define-c (maybe-null (pointer void)) IMG_Load_RW ((pointer void) int))

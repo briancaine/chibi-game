@@ -1,14 +1,4 @@
-(import (chibi process)
-        (prefix (chibi string) imported:)
-        (chibi char-set full))
-
-(set! *cflags*
-  (append
-   *cflags*
-   (filter (lambda (x) (not (imported:string-null? x)))
-           (imported:string-split
-            (process->string "sdl2-config --libs --cflags")
-            char-set:whitespace))))
+(c-flags-from-script "sdl2-config --libs --cflags")
 
 (c-include "SDL.h")
 
