@@ -1,4 +1,4 @@
-(define-unprocessed-library (bcaine sdl2-mixer)
+(define-unprocessed-library (sdl2-mixer)
   (import (chibi))
   (include+export-stub "sdl2-mixer"))
 

@@ -1,4 +1,4 @@
-(define-unprocessed-library (bcaine sdl2)
+(define-unprocessed-library (sdl2)
   (import (chibi) (srfi 17))
   (import (chibi bytevector) (only (scheme small) bytevector))
   (include+export-stub "sdl2")
