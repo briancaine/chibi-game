@@ -944,7 +944,9 @@
 (define-c (maybe-null (pointer SDL_Window)) SDL_CreateWindow (string int int int int unsigned-int))
 (define-c void SDL_DestroyWindow ((SDL_Window)))
 
-(define-c (maybe-null (pointer void)) SDL_CreateRenderer (SDL_Window int unsigned-int))
+(define-c-struct SDL_Renderer predicate: SDL_Renderer?)
+
+(define-c (maybe-null (pointer SDL_Renderer)) SDL_CreateRenderer (SDL_Window int unsigned-int))
 
 (define-c (pointer SDL_Window) SDL_GL_GetCurrentWindow ())
 (define-c (pointer void) SDL_GL_CreateContext ((SDL_Window)))
@@ -1080,11 +1082,11 @@
 (define-c void SDL_DestroyTexture ((pointer void)))
 
 (define-c void SDL_FreeSurface ((pointer void)))
-(define-c void SDL_DestroyRenderer ((pointer void)))
-(define-c int SDL_RenderCopy ((pointer void) (pointer void) (maybe-null SDL_Rect) (maybe-null SDL_Rect)))
+(define-c void SDL_DestroyRenderer ((SDL_Renderer)))
+(define-c int SDL_RenderCopy ((SDL_Renderer) (pointer void) (maybe-null SDL_Rect) (maybe-null SDL_Rect)))
 (define-c int SDL_SetTextureAlphaMod ((pointer void) unsigned-char))
 
-(define-c void SDL_RenderPresent ((pointer void)))
+(define-c void SDL_RenderPresent ((SDL_Renderer)))
 (define-c string SDL_GetError ())
 
 (define-c int SDL_QueryTexture
