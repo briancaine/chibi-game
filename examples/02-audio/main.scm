@@ -6,11 +6,11 @@
 (define window-title "Example 2: Audio")
 (define target-fps 45)
 
-(import (bcaine sdl2) (bcaine sdl2-image) (bcaine sdl2-mixer)
+(import (sdl2) (sdl2-image) (sdl2-mixer)
         (bcaine defstruct)
         (srfi 33)
         (only (scheme base) unless when)
-        (bcaine chicken-misc)
+        (bcaine misc-util)
         (bcaine format)
         (chibi process))
 

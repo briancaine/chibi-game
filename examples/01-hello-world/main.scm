@@ -9,10 +9,10 @@
  ;; the period by which hello-1 and hello-2 are scaled
 (define scaling-cycle-ms 2000)
 
-(import (bcaine sdl2) (bcaine sdl2-image)
+(import (sdl2) (sdl2-image)
         (srfi 33)
         (only (scheme base) unless when)
-        (bcaine chicken-misc)
+        (bcaine misc-util)
         (bcaine format)
         (chibi process))
 
