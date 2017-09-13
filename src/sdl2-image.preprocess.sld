@@ -1,3 +1,5 @@
 (define-unprocessed-library (sdl2-image)
   (import (chibi))
-  (include+export-stub "sdl2-image"))
+  (include+export-stub "sdl2-image")
+  (import (sdl2) (srfi 2))
+  (include "sdl2-image.scm"))

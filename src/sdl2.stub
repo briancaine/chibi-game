@@ -1078,17 +1078,20 @@
 
 (define-c (struct SDL_Surface) SDL_Surface_from_ptr ((pointer void)))
 
-(define-c (maybe-null (pointer void)) SDL_CreateTextureFromSurface ((pointer void) (pointer void)))
-(define-c void SDL_DestroyTexture ((pointer void)))
+(define-c-struct SDL_Texture
+ predicate: SDL_Texture?)
 
-(define-c void SDL_FreeSurface ((pointer void)))
+(define-c (maybe-null SDL_Texture) SDL_CreateTextureFromSurface (SDL_Renderer SDL_Surface))
+(define-c void SDL_DestroyTexture (SDL_Texture))
+
+(define-c void SDL_FreeSurface (SDL_Surface))
 (define-c void SDL_DestroyRenderer ((SDL_Renderer)))
-(define-c int SDL_RenderCopy ((SDL_Renderer) (pointer void) (maybe-null SDL_Rect) (maybe-null SDL_Rect)))
-(define-c int SDL_SetTextureAlphaMod ((pointer void) unsigned-char))
+(define-c int SDL_RenderCopy (SDL_Renderer SDL_Texture (maybe-null SDL_Rect) (maybe-null SDL_Rect)))
+(define-c int SDL_SetTextureAlphaMod (SDL_Texture unsigned-char))
 
-(define-c void SDL_RenderPresent ((SDL_Renderer)))
+(define-c void SDL_RenderPresent (SDL_Renderer))
 (define-c string SDL_GetError ())
 
 (define-c int SDL_QueryTexture
-              ((pointer void) (array unsigned-int)
+              (SDL_Texture (array unsigned-int)
                (array int) (array int) (array int)))
