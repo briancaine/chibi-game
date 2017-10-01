@@ -965,6 +965,21 @@
  (int           data1     SDL_WindowEvent-data1)
  (int           data2     SDL_WindowEvent-data2))
 
+(define-c-struct SDL_RendererInfo
+ predicate: SDL_RendererInfo?
+ constructor:
+   (make-SDL_RendererInfo name flags num_texture_formats
+                         max_texture_width max_texture_height)
+ (string       name                SDL_RendererInfo-name)
+ (unsigned-int flags               SDL_RendererInfo-flags)
+ (unsigned-int num_texture_formats SDL_RendererInfo-num_texture_formats)
+ ((pointer void) texture_formats SDL_RendererInfo-texture_formats)
+ (int          max_texture_width   SDL_RendererInfo-max_texture_width)
+ (int          max_texture_height  SDL_RendererInfo-max_texture_height)
+)
+
+(define-c int SDL_GetRendererInfo (SDL_Renderer SDL_RendererInfo))
+
 (define-c-struct SDL_Keysym
  predicate:   SDL_Keysym?
  constructor: (make-SDL_Keysym scancode sym mod unused)
